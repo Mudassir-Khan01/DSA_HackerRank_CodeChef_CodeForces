@@ -1,0 +1,36 @@
+package HackerRank;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class classSkill {//give list of skilss and maxspread
+
+    public static int minClases(List<Integer> levels, int maxSpread) {
+        Collections.sort(levels);
+        int n = levels.size();
+        int numClasses = 0;
+
+        for (int i = 0; i < n; ) {
+            numClasses++;
+            int currentGroup = levels.get(i);
+
+            while (i < n && levels.get(i) - currentGroup <= maxSpread) {
+                i++;
+            }
+        }
+        return numClasses;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> levels = new ArrayList<>();
+        levels.add(1);
+        levels.add(4);
+        levels.add(7);
+        levels.add(3);
+        levels.add(4);
+
+        int maxSpread = 2;
+        System.out.println("Minimum number of classes required: " + minClases(levels, maxSpread));
+    }
+}
